@@ -1,0 +1,4 @@
+var config = {
+    "site_url": "https://www.tzaeru.com/potm/tools/",
+    "api_url": "https://www.tzaeru.com/potm/tools/api/"
+}

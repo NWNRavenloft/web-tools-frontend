@@ -3,6 +3,7 @@
 <html>
 <head>
 <title></title>
+<script src="./config.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://pixijs.download/release/pixi.min.js"></script>
 <script src="https://cdn.webix.com/edge/webix.js" type="text/javascript"></script>
@@ -16,7 +17,6 @@ var loaded_sites = {}
 
 $( document ).ready(function() {
     var page = window.location.href.substr(window.location.href.lastIndexOf('/') + 1);
-
     if (page.length > 0 && page !== "tools")
     {
         console.log("loading page:" + page);
@@ -37,7 +37,7 @@ webix.ready(function(){
         on:{
             onAfterSelect:function(id){
                 webix.message("Click: "+ id);
-                location.href = "https://www.tzaeru.com/potm/tools/" + id;
+                location.href = config.site_url + id;
             }
         }
     });
