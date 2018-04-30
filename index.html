@@ -1,59 +1,55 @@
 <meta charset="utf-8"/>
-
 <html>
-<head>
-<title></title>
-<script src="./config.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="https://pixijs.download/release/pixi.min.js"></script>
-<script src="https://cdn.webix.com/edge/webix.js" type="text/javascript"></script>
-<link rel="stylesheet" href="https://cdn.webix.com/edge/webix.css" type="text/css"> 
-
-</head>
-<body>
-<script type="text/javascript" charset="utf-8">
-
-var loaded_sites = {}
-
-$( document ).ready(function() {
-    var page = window.location.href.substr(window.location.href.lastIndexOf('/') + 1);
-    if (page.length > 0 && page !== "tools")
-    {
-        console.log("loading page:" + page);
-        $("#content").load("tools/" + page + "/" + page + ".html");
-    }
-});
-
-webix.ready(function(){
-    webix.ui({
-        view: "sidebar",
-        container:"sidebar",
-        // setting the data source
-        data: [
-            { value:"Player tools..", data:[{id:"text-insert", value: "Text Insert"}]},
-            { value:"DM tools..", data:[{id:"player-list", value: "Player List"}, {id:"stored-area-manipulation", value: "Stored Area Manipulator"}]},
-            { value:"Developer tools..", data:[{id:"treasury-list", value: "Treasury List"}]}
-        ],
-        on:{
-            onAfterSelect:function(id){
-                webix.message("Click: "+ id);
-                location.href = config.site_url + id;
-            }
-        }
-    });
-});
-
-</script>
-
-<style>
-
-
-</style>
-
-<!-- ugly hack to stop the left and right elements from wrapping. -->
-<div style="white-space: nowrap;overflow:hidden">
-    <div id="sidebar" style="float: left; width:300px; height: 100%; display: inline-block;"></div>
-    <div id="content" style="float: left; display: inline-block;"></div>
-</div>
-</body>
+    <head>
+        <title></title>
+        <script src="./config.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://pixijs.download/release/pixi.min.js"></script>
+        <script src="https://cdn.webix.com/edge/webix.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="https://cdn.webix.com/edge/webix.css" type="text/css">
+    </head>
+    <body>
+        <script type="text/javascript" charset="utf-8">
+            var loaded_sites = {}
+            
+            // Called when the page has done loading.
+            $( document ).ready(function() {
+                // We use this to get the last part of the URL as seen in the address bar at the top of the browser.
+                var page = window.location.href.substr(window.location.href.lastIndexOf('/') + 1);
+                if (page.length > 0 && page !== "tools")
+                {
+                    console.log("loading page:" + page);
+                    // Here we load the target page such as 'player-list' to a div element defined further down.
+                    $("#content-container").load("tools/" + page + "/" + page + ".html");
+                }
+            });
+            
+            webix.ready(function(){
+                webix.ui({
+                    view: "sidebar",
+                    // The container is a div declared further down
+                    container:"sidebar-container",
+                    data: [
+                        { value:"Player tools..", data:[{id:"text-insert", value: "Text Insert"}]},
+                        { value:"DM tools..", data:[{id:"player-list", value: "Player List"}, {id:"stored-area-manipulation", value: "Stored Area Manipulator"}]},
+                        { value:"Developer tools..", data:[{id:"treasury-list", value: "Treasury List"}]}
+                    ],
+                    // Event bindings for when something happens with the widget.
+                    on:{
+                        onAfterSelect:function(id){
+                            webix.message("Click: "+ id);
+                            location.href = config.site_url + id;
+                        }
+                    }
+                });
+            });
+            
+        </script>
+        <style>
+        </style>
+        <div style="white-space: nowrap;overflow:hidden">
+            <div id="sidebar-container" style="float: left; width:300px; height: 100%; display: inline-block;"></div>
+            <div id="content-container" style="float: left; display: inline-block;"></div>
+        </div>
+    </body>
 </html>
