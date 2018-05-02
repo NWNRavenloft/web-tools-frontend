@@ -26,8 +26,8 @@ def run(server_class=HTTPServer, handler_class=S, port=8080):
     logging.info('Stopping httpd...\n')
 
 def update():
-    print (subprocess.check_output(['git','fetch --all']))
-    print (subprocess.check_output(['git', 'reset --hard origin/master']))
+    print (subprocess.check_output(['git','fetch', '--all']))
+    print (subprocess.check_output(['git', 'reset', '--hard', 'origin/master']))
 
 if __name__ == '__main__':
     from sys import argv
