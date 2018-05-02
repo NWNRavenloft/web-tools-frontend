@@ -1,3 +1,4 @@
+'use strict';
 
 console.log("HI");
 var myView = document.getElementById('pixi');

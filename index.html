@@ -41,7 +41,7 @@
                     on:{
                         onAfterSelect:function(id){
                             webix.message("Click: "+ id);
-                            history.pushState(null, '', '/potm/tools/' + id);
+                            history.pushState(null, '', config.site_url + id);
                             $("#content-container").load("tools/" + id + "/" + id + ".html");
                             //location.href = config.site_url + id;
                         }
