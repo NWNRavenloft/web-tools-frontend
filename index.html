@@ -6,10 +6,13 @@
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://pixijs.download/release/pixi.min.js"></script>
         <script src="https://cdn.webix.com/edge/webix.js" type="text/javascript"></script>
+        <script src="./tools/stored-area-manipulation/stored-area-manipulation.js"></script>
         <link rel="stylesheet" href="https://cdn.webix.com/edge/webix.css" type="text/css">
     </head>
     <body>
         <script type="text/javascript" charset="utf-8">
+            'use strict';
+
             var loaded_sites = {}
             
             // Called when the page has done loading.
@@ -38,7 +41,9 @@
                     on:{
                         onAfterSelect:function(id){
                             webix.message("Click: "+ id);
-                            location.href = config.site_url + id;
+                            history.pushState(null, '', '/potm/tools/' + id);
+                            $("#content-container").load("tools/" + id + "/" + id + ".html");
+                            //location.href = config.site_url + id;
                         }
                     }
                 });
