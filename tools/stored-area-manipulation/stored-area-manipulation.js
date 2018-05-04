@@ -20,7 +20,7 @@ Math.degrees = function(radians) {
 
 var placeables = [];
 
-function onInitializeAreaManipulation() {
+function initStoredAreaManipulation() {
     myView = document.getElementById('pixi');
     app = new PIXI.Application(400, 400, {backgroundColor : 0x1099bb, view: myView});
     renderer = PIXI.autoDetectRenderer(400, 400, myView);
